@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <%- include('header.ejs') %> 
+
+  <div class="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-md">
+    <!-- Cart Item -->
+    <% if (user.cart && user.cart.length > 0) { %>
+    <div class="flex items-center space-x-6">
+      <div class="rounded-md w-[16rem] h-[14rem] bg-[<%=user.cart[0].bgcolor%>] flex justify-center items-center">
+        <img class="w-[15rem] h-[13rem]" src="data:image/png;base64,<%= user.cart[0].image.toString('base64') %>" alt="product image">
+      </div> <!-- Placeholder for product image -->
+      
+      <div class="flex-1">
+        <h4 class="text-xl font-bold"><%=user.cart[0].name %></h4>
+        <div class="flex items-center space-x-4 mt-4">
+          <button class=" px-3 py-1 border rounded">+</button>
+          <span>01</span>
+          <button class=" px-3 py-1 border rounded">-</button>
+        </div>
+      </div>
+
+      <div>
+        <p class="text-lg font-bold">₹<%=user.cart[0].price%></p>
+      </div>
+    </div>
+
+    <!-- Price Breakdown -->
+    <div class="mt-10">
+      <h3 class="text-lg font-bold mb-4">Price Breakdown</h3>
+      <div class="grid grid-cols-2 gap-4">
+        <p>Total MRP</p>
+        <p class="text-right">₹<%=user.cart[0].price%></p>
+
+        <p>Discount on MRP</p>
+        <p class="text-right">₹<%=user.cart[0].discount%></p>
+
+        <p>Platform Fee</p>
+        <p class="text-right">₹20</p>
+
+        <p>Shipping Fee</p>
+        <p class="text-right text-green-500">FREE</p>
+      </div>
+
+      <div class="border-t mt-6 pt-4 flex justify-between items-center">
+        <h3 class="text-lg font-bold">Total Amount</h3>
+        <p class="text-xl font-bold text-green-600">₹<%=user.cart[0].price - user.cart[0].discount + 20 %></p>
+        <% } else { %>
+            <p class="font-bold text-3xl">Your cart🛒 is empty!</p>
+        <% } %>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

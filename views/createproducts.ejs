@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Product</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+  <%- include('header.ejs') %> 
+  
+  <div class="min-h-screen flex">
+    <!-- Sidebar -->
+    <aside class="w-1/4 bg-gray-200 p-4">
+      <h1 class="text-lg text-blue-700 font-bold mb-4">Ecart</h1>
+      <ul>
+        <li class="mb-2">
+          <a href="/shop" class="text-blue-500 hover:underline">All Products</a>
+        </li>
+        <li>
+          <a href="#" class="text-blue-500 hover:underline">Create New Product</a>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="w-3/4 p-8">
+      <h2 class="text-xl font-bold mb-6">Create New Product</h2>
+      
+      <form action="/product/create" method="post" enctype="multipart/form-data" class="space-y-6">
+        <!-- Product Details -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Product Details</h3>
+          
+          <div class="mb-4">
+            <label for="productImage" class="block font-medium">Product Image</label>
+            <input type="file" id="productImage" name="image" class="block mt-2">
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label for="productName" class="block font-medium">Product Name</label>
+              <input type="text" id="productName" name="name" class="w-full border border-gray-300 rounded p-2 mt-1" placeholder="Product Name">
+            </div>
+            <div>
+              <label for="productPrice" class="block font-medium">Product Price</label>
+              <input type="number" id="productPrice" name="price" class="w-full border border-gray-300 rounded p-2 mt-1" placeholder="Product Price">
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <label for="discountPrice" class="block font-medium">Discount Price</label>
+            <input type="number" id="discountPrice" name="discount" class="w-full border border-gray-300 rounded p-2 mt-1" placeholder="Discount Price">
+          </div>
+        </div>
+
+        <!-- Panel Details -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Panel Details</h3>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label for="backgroundColor" class="block font-medium">Background Color</label>
+              <input type="text" id="backgroundColor" name="bgcolor" class="w-full border border-gray-300 rounded p-2 mt-1" placeholder="Background Color">
+            </div>
+            <div>
+              <label for="panelColor" class="block font-medium">Panel Color</label>
+              <input type="text" id="panelColor" name="panelcolor" class="w-full border border-gray-300 rounded p-2 mt-1" placeholder="Panel Color">
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <label for="textColor" class="block font-medium">Text Color</label>
+            <input type="text" id="textColor" name="textcolor" class="w-full border border-gray-300 rounded p-2 mt-1" placeholder="Text Color">
+          </div>
+        </div>
+        <input type="submit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+      </form>
+    </main>
+  </div>
+</body>
+</html>
